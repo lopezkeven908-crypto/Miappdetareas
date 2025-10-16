@@ -1,16 +1,17 @@
-from kivy.app import App 
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
+from kivy.app import App # clase App de Kivy 
+from kivy.uix.boxlayout import BoxLayout # contenedor 
+from kivy.uix.label import Label # parda mostrar texto
+from kivy.uix.textinput import TextInput # entrada del texto 
+from kivy.uix.button import Button # botones
 
-class MiApp(App):
-    def build(self):
+class MiApp(App): # clase de la app
+    def build(self): # metodo build
+        # lista para almacenar las tareas 
        
-        self.tareas = []
+        self.tareas = [] # lista
 
        
-        self.caja = BoxLayout(orientation="vertical")
+        self.caja = BoxLayout(orientation="vertical") # contenedor vertical de los label y botones
 
         
         self.caja.add_widget(Label(text="Mi lista de tareas"))
@@ -46,6 +47,17 @@ class MiApp(App):
         self.caja.add_widget(self.mensaje)
 
         return self.caja
+
+    def guardar(self):
+        texto = self.entrada.text
+        if texto != "":
+            self.tareas.append(texto)
+            self.mensaje.text = "Tarea guardada: " + texto
+            self.entrada.text = ""
+        else:
+            self.mensaje.text = "Escribe algo primero."
+
+    
 
 
 # Ejecutar la app
