@@ -47,43 +47,6 @@ class MiApp(App):
 
         return self.caja
 
-    def guardar(self):
-        texto = self.entrada.text
-        if texto != "":
-            self.tareas.append(texto)
-            self.mensaje.text = "Tarea guardada: " + texto
-            self.entrada.text = ""
-        else:
-            self.mensaje.text = "Escribe algo primero."
-
-    def ver(self):
-        if len(self.tareas) > 0:
-
-            texto = ""
-        for tarea in self.tareas:
-            texto += tarea + "\n"
-            self.mensaje.text = texto
-        else:
-            self.mensaje.text = "No hay tareas."
-
-    def cambiar(self):
-        nuevo = self.entrada.text
-        if nuevo != "":
-            if len(self.tareas) > 0:
-                self.tareas[0] = nuevo
-                self.mensaje.text = "Primera tarea cambiada."
-                self.entrada.text = ""
-            else:
-                self.mensaje.text = "No hay tareas para cambiar."
-        else:
-            self.mensaje.text = "Escribe la nueva tarea."
-
-    def borrar(self):
-        if len(self.tareas) > 0:
-            self.tareas.pop(0)
-            self.mensaje.text = "Primera tarea borrada."
-        else:
-            self.mensaje.text = "No hay tareas para borrar."
 
 # Ejecutar la app
 MiApp().run()
